@@ -16,6 +16,9 @@ jobs:
             uses: actions/hello-world-javascript-action@main
             with:
               who-to-greet: ${{ github.actor }}
+          - name: time
+            run:
+              echo "The Time of the greeting was at: ${{ steps.print-to-log.outputs.time }}"
           
     SecondJob:
           runs-on: ubuntu-latest
