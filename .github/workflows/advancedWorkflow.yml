@@ -1,0 +1,29 @@
+name: first workflow
+
+on: 
+    workflow_dispatch:
+
+jobs:
+    firstjob:
+        runs-on: ubuntu-latest
+        steps:
+          - name: firstJob script
+            shell: bash
+            run: echo Hello World! this is the first job
+          - uses: actions/checkout@v4
+          - name: Print to Log
+            id: print-to-log
+            uses: actions/hello-world-javascript-action@main
+            with:
+              who-to-greet: ${{ github.actor }}
+          
+    SecondJob:
+          runs-on: ubuntu-latest
+          steps:
+            - name: secondJob script
+              shell: bash
+              run:
+                echo this is the second job
+                echo and this is a multi-line script
+            -  run: echo this the the second job
+            -  run: echo thse last two are not from a multi-line script
